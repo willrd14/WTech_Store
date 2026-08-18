@@ -21,8 +21,11 @@
 11. [Routing](#11-routing)
 12. [Product Data](#12-product-data)
 13. [Implemented Changes](#13-implemented-changes)
-14. [Pending Changes](#14-pending-changes)
+14. [Deployment](#14-deployment)
 15. [Environment Variables](#15-environment-variables)
+16. [Implemented Changes (continued)](#16-implemented-changes-continued)
+17. [Pending Changes](#17-pending-changes)
+18. [Known Issues / Tech Debt](#18-known-issues--tech-debt)
 
 ---
 
@@ -39,6 +42,8 @@ WTech-Store/
 │   ├── postcss.config.js
 │   ├── tailwind.config.js           # Full design theme (colors, fonts, spacing)
 │   ├── vite.config.js
+│   └── public/
+│       └── _redirects               # SPA routing for Cloudflare Pages
 │   └── src/
 │       ├── main.jsx                 # BrowserRouter > AuthProvider > CartProvider > App
 │       ├── App.jsx                  # Routes + Header + Footer layout
@@ -90,9 +95,13 @@ WTech-Store/
 │       ├── styles/                    # (empty)
 │
 ├── server/                           # Express backend
-│   ├── .env                          # Supabase + PayPal + PORT=3001
+│   ├── .env                          # Supabase + PayPal + SMTP + PORT=3001
 │   ├── .env.example
 │   ├── package.json
+│   ├── Dockerfile                    # Server-specific Dockerfile
+│   ├── docker-compose.yml            # Docker compose for local testing
+│   ├── .dockerignore
+│   ├── ecosystem.config.json         # PM2 config
 │   └── src/
 │       ├── app.js                    # Express entry point, CORS, routes, error handler
 │       ├── config/
@@ -116,6 +125,9 @@ WTech-Store/
 │           └── supportRoutes.js      # NEW: POST /api/support
 │
 ├── .gitignore
+├── Dockerfile                       # Root Dockerfile for Fly.io (Node 22 Alpine)
+├── fly.toml                         # Fly.io configuration
+├── .dockerignore                    # Docker ignore rules
 ├── stitch_landing.html              # Stitch design reference
 ├── stitch_catalogo.html
 ├── stitch_carrito.html
@@ -436,8 +448,8 @@ api.updateAdminOrder(id, data)   // PUT /api/admin/orders/:id
 ## 9. Backend (Express Server)
 
 ### Server Entry (`server/src/app.js`)
-- Port: 3001
-- CORS: allows `localhost:5173` and `localhost:3000`
+- Port: 3001 (listens on `0.0.0.0` for Fly.io)
+- CORS: allows `localhost:5173`, `localhost:3000`, `wtech-store.fly.dev`, and any `CLIENT_URL` env var (comma-separated)
 - Routes:
   - `GET /api/health` → `{ status: "ok", timestamp }`
   - `/api/products` → productRoutes
@@ -649,23 +661,43 @@ Has additional fields vs local data: `slug`, `images[]`, `reviews_count`, `creat
 
 ---
 
-## 14. Pending Changes
+## 14. Deployment
 
-### 14.1 🔲 Auth: Google OAuth Verification
-- Auth code is implemented but Google provider must be enabled in Supabase dashboard
-- Verify: Supabase > Authentication > Providers > Google is enabled with correct Client ID/Secret
+### Frontend — Cloudflare Pages
+- **URL:** https://wtech-store.pages.dev
+- **Project name:** `wtech-store`
+- **Build command:** `cd client && npm run build`
+- **Output directory:** `client/dist`
+- **SPA routing:** `client/public/_redirects` handles SPA fallback
+- **Environment variables** (set in Cloudflare Pages dashboard or via `wrangler pages secret put`):
+  - `VITE_SUPABASE_URL`
+  - `VITE_SUPABASE_ANON_KEY`
+  - `VITE_PAYPAL_CLIENT_ID`
+  - `VITE_API_URL` → `https://wtech-store.fly.dev`
 
-### 14.2 🔲 Deploy to Cloudflare
-- **Frontend:** Cloudflare Pages (build: `npm run build`, output: `dist/`)
-- **Backend:** Options — Cloudflare Workers (rewrite with Hono), VPS, or Cloudflare Tunnel
-- **Database:** Already on Supabase (cloud), no change needed
-- Update `VITE_API_URL` to production backend URL
+### Backend — Fly.io
+- **URL:** https://wtech-store.fly.dev
+- **App name:** `wtech-store`
+- **Region:** `ams` (Amsterdam)
+- **Config:** `fly.toml` in project root
+- **Dockerfile:** `Dockerfile` in project root (Node 22 Alpine)
+- **Machines:** 2 (auto-start/stop, shared CPU, 256MB RAM)
+- **Secrets** (set via `fly secrets set`):
+  - `SUPABASE_URL`, `SUPABASE_ANON_KEY`
+  - `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET`, `PAYPAL_MODE`
+  - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SUPPORT_EMAIL`
+  - `PORT`
+
+### Database — Supabase (Cloud)
+- Project ref: `lhhyuismzzsyddsnxjjk`
+- No deployment needed — already hosted
+- SQL migrations executed via Supabase Management API
 
 ---
 
 ## 15. Environment Variables
 
-### Client (.env)
+### Client (.env) — Local Development
 ```
 VITE_SUPABASE_URL=https://lhhyuismzzsyddsnxjjk.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGci...
@@ -673,7 +705,7 @@ VITE_PAYPAL_CLIENT_ID=AeqZMR6FIXZeglCevik_MA41EDM4R35R_bOaPcBfiDT3bkYOSBKlyJ_wIe
 VITE_API_URL=http://localhost:3001
 ```
 
-### Server (.env)
+### Server (.env) — Local Development
 ```
 SUPABASE_URL=https://lhhyuismzzsyddsnxjjk.supabase.co
 SUPABASE_ANON_KEY=eyJhbGci...
@@ -683,9 +715,9 @@ PAYPAL_MODE=sandbox
 PORT=3001
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_app_password
-SUPPORT_EMAIL=recipient@example.com
+SMTP_USER=wtech-support@w-tech.uk
+SMTP_PASS=lopv lzdz nstt hjms
+SUPPORT_EMAIL=wtech-support@w-tech.uk
 ```
 
 ### Required Supabase SQL Migrations
@@ -721,12 +753,54 @@ cd client && npm run dev         # Runs on http://localhost:5173
 
 ---
 
-## Known Issues / Tech Debt
+## 16. Implemented Changes (continued)
+
+### 16.1 ✅ Fly.io Backend Deployment
+- Backend deployed to https://wtech-store.fly.dev
+- Dockerfile (Node 22 Alpine) + fly.toml configuration
+- Server listens on `0.0.0.0:3001` for Fly.io proxy
+- Secrets managed via `fly secrets set` (Supabase, PayPal, SMTP)
+- 2 machines (auto-start/stop) in Amsterdam region
+
+### 16.2 ✅ Cloudflare Pages Frontend Deployment
+- Frontend deployed to https://wtech-store.pages.dev
+- Build with `VITE_API_URL=https://wtech-store.fly.dev` baked in
+- SPA routing via `_redirects` file
+- Environment variables configured as Cloudflare Pages secrets
+
+### 16.3 ✅ SMTP Email Support Configured
+- Gmail SMTP via `wtech-support@w-tech.uk` (Google Workspace)
+- App password authentication
+- Emails sent to `wtech-support@w-tech.uk`
+- Tested and confirmed working
+
+### 16.4 ✅ CORS Updated for Production
+- Production Fly.io domain added to allowed origins
+- Supports comma-separated `CLIENT_URL` env var for custom domains
+
+---
+
+## 17. Pending Changes
+
+### 17.1 🔲 Supabase Redirect URLs
+- Add `https://wtech-store.pages.dev` to Supabase URL Configuration > Redirect URLs
+- Required for Google OAuth and email confirmation to work in production
+
+### 17.2 🔲 PayPal Production Mode
+- When ready to go live: change `PAYPAL_MODE` from `sandbox` to `live`
+- Replace sandbox credentials with production credentials in Fly.io secrets
+
+### 17.3 🔲 Product Images
+- Products reference `/images/products/*.png` which don't exist locally
+- Need to add product images to `client/public/images/products/`
+
+---
+
+## 18. Known Issues / Tech Debt
 
 1. **Duplicate product data** — Local `data/products.js` AND Supabase `products` table. Some pages use local, some use API.
 2. **Cart not persisted** — CartContext is in-memory only; lost on refresh.
 3. **No validation** — Forms (register, login, checkout, contact) have no input validation.
 4. **Images** — Products reference `/images/products/*.png` which don't exist locally (need to be added to `public/`).
 5. **PayPal currency** — PayPal processes in USD. Prices displayed in DOP but payment happens in USD. Consider adding server-side conversion rate.
-6. **SMTP not configured** — Support email requires real SMTP credentials in server `.env`.
-7. **Admin role** — No UI to promote users to admin. Must run SQL directly.
+6. **Admin role** — No UI to promote users to admin. Must run SQL directly.
