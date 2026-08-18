@@ -1,8 +1,13 @@
+# fly.toml app configuration file generated for wtech-store on 2026-08-18T21:50:40Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
 app = 'wtech-store'
 primary_region = 'ams'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [http_service]
   internal_port = 3001
@@ -11,12 +16,12 @@ primary_region = 'ams'
   auto_start_machines = true
   min_machines_running = 0
 
-[http_service.concurrency]
-  type = "connections"
-  hard_limit = 25
-  soft_limit = 20
+  [http_service.concurrency]
+    type = 'connections'
+    hard_limit = 25
+    soft_limit = 20
 
 [[vm]]
-  cpu_kind = "shared"
+  cpu_kind = 'shared'
   cpus = 1
   memory_mb = 256
