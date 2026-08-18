@@ -1,0 +1,14 @@
+node_modules
+client/node_modules
+server/node_modules
+client/dist
+.git
+.gitignore
+.env
+.env.local
+*.md
+*.log
+stitch_*.html
+.agents
+.vscode
+.idea
