@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "name": "wtech-api",
+      "script": "src/app.js",
+      "cwd": "/app",
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "max_memory_restart": "256M",
+      "instances": 1,
+      "exec_mode": "fork",
+      "autorestart": true,
+      "watch": false,
+      "log_date_format": "YYYY-MM-DD HH:mm:ss",
+      "error_file": "./logs/error.log",
+      "out_file": "./logs/out.log",
+      "merge_logs": true
+    }
+  ]
+}
