@@ -1,7 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const PAYPAL_API = "https://api-m.sandbox.paypal.com";
+const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || "";
+const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET || "";
+const PAYPAL_API = process.env.PAYPAL_MODE === "live"
+  ? "https://api-m.paypal.com"
+  : "https://api-m.sandbox.paypal.com";
 
 let cachedToken = null;
 let tokenExpiry = 0;
@@ -15,7 +19,7 @@ export async function getAccessToken() {
       Authorization:
         "Basic " +
         Buffer.from(
-          process.env.PAYPAL_CLIENT_ID + ":" + process.env.PAYPAL_CLIENT_SECRET
+          PAYPAL_CLIENT_ID + ":" + PAYPAL_CLIENT_SECRET
         ).toString("base64"),
       "Content-Type": "application/x-www-form-urlencoded",
     },
