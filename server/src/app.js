@@ -34,6 +34,6 @@ app.use("/api/support", supportRoutes);
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`[WTech API] Server running on http://localhost:${PORT}`);
 });
