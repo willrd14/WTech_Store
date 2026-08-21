@@ -15,13 +15,13 @@ export default function ProductDetail() {
             error_outline
           </span>
           <h1 className="font-display-lg text-headline-lg text-on-surface mb-4">
-            Product Not Found
+            Producto No Encontrado
           </h1>
           <Link
             to="/products"
             className="text-primary-container font-label-caps text-label-caps hover:underline"
           >
-            Back to Catalog
+            Volver al Catalogo
           </Link>
         </div>
       </main>
@@ -36,11 +36,11 @@ export default function ProductDetail() {
 
       <nav className="mb-8 font-label-caps text-sm text-on-surface-variant">
         <Link to="/" className="hover:text-primary transition-colors">
-          Home
+          Inicio
         </Link>
         <span className="mx-2">/</span>
         <Link to="/products" className="hover:text-primary transition-colors">
-          Catalog
+          Catalogo
         </Link>
         <span className="mx-2">/</span>
         <span className="text-primary">{product.name}</span>
@@ -79,7 +79,7 @@ export default function ProductDetail() {
             </div>
             <span className="text-outline">|</span>
             <span className="font-label-caps text-sm text-on-surface-variant">
-              {product.inStock ? "In Stock" : "Out of Stock"}
+              {product.inStock ? "En Stock" : "Sin Stock"}
             </span>
           </div>
 
@@ -113,13 +113,13 @@ export default function ProductDetail() {
                 <span className="material-symbols-outlined text-lg">
                   shopping_cart
                 </span>
-                Add to Cart
+                Agregar al Carrito
               </button>
               <Link
                 to="/cart"
                 className="bg-transparent border border-primary-container text-primary-container font-label-caps text-label-caps py-4 px-8 rounded uppercase hover:bg-primary-container/10 transition-all duration-300 flex items-center justify-center"
               >
-                Buy Now
+                Comprar Ahora
               </Link>
             </div>
           </div>

@@ -23,33 +23,33 @@ export default function Login() {
           <Link to="/" className="font-display-lg text-headline-lg text-primary inline-block mb-4">
             WTech
           </Link>
-          <h1 className="font-headline-lg-mobile text-on-surface">Welcome Back</h1>
+          <h1 className="font-headline-lg-mobile text-on-surface">Bienvenido</h1>
           <p className="font-body-md text-on-surface-variant text-sm mt-2">
-            Access your terminal
+            Accede a tu terminal
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="glass-panel rounded-lg p-8 space-y-6">
           <div>
-            <label className="font-label-caps text-on-surface mb-2 block">EMAIL</label>
+            <label className="font-label-caps text-on-surface mb-2 block">CORREO</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-              placeholder="your@email.com"
+              placeholder="tu@correo.com"
               required
             />
           </div>
 
           <div>
-            <label className="font-label-caps text-on-surface mb-2 block">PASSWORD</label>
+            <label className="font-label-caps text-on-surface mb-2 block">CONTRASEÑA</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-              placeholder="Enter password"
+              placeholder="Ingresa tu contraseña"
               required
             />
           </div>
@@ -59,7 +59,7 @@ export default function Login() {
             disabled={loading}
             className="w-full bg-primary-container text-[#050B10] font-label-caps text-label-caps py-4 rounded uppercase tracking-widest hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 font-bold disabled:opacity-50"
           >
-            {loading ? "Authenticating..." : "Sign In"}
+            {loading ? "Autenticando..." : "Iniciar Sesion"}
           </button>
 
           <div className="relative my-4">
@@ -68,7 +68,7 @@ export default function Login() {
             </div>
             <div className="relative flex justify-center text-xs">
               <span className="bg-surface-container px-2 font-label-caps text-outline">
-                OR
+                O
               </span>
             </div>
           </div>
@@ -80,13 +80,13 @@ export default function Login() {
             className="w-full bg-surface-container border border-outline-variant text-on-surface font-label-caps text-label-caps py-4 rounded uppercase hover:border-primary-container hover:text-primary-container transition-all duration-300 flex items-center justify-center gap-2"
           >
             <span className="material-symbols-outlined text-lg">login</span>
-            Sign in with Google
+            Iniciar sesion con Google
           </button>
 
           <p className="text-center font-body-md text-on-surface-variant text-sm mt-4">
-            Don&apos;t have an account?{" "}
+            ¿No tienes cuenta?{" "}
             <Link to="/register" className="text-primary-container hover:underline">
-              Create one
+              Crea una
             </Link>
           </p>
         </form>

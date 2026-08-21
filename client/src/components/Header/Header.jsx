@@ -5,10 +5,10 @@ import { useAuth } from "../../context/AuthContext";
 import { supabase } from "../../services/supabase";
 
 const navLinks = [
-  { label: "Catalog", path: "/products" },
-  { label: "New Arrivals", path: "/products?sort=new" },
-  { label: "Deals", path: "/products?deals=true" },
-  { label: "Support", path: "/contact" },
+  { label: "Catalogo", path: "/products" },
+  { label: "Novedades", path: "/products?sort=new" },
+  { label: "Ofertas", path: "/products?deals=true" },
+  { label: "Soporte", path: "/contact" },
 ];
 
 export default function Header() {
@@ -67,7 +67,7 @@ export default function Header() {
             </span>
             <input
               className="bg-transparent border-none focus:ring-0 text-on-surface font-label-caps text-label-caps placeholder-outline-variant w-40 outline-none"
-              placeholder="Search tech..."
+              placeholder="Buscar tecnologia..."
               type="text"
             />
           </div>
@@ -76,7 +76,7 @@ export default function Header() {
             <Link
               to="/admin"
               className="text-primary dark:text-primary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300"
-              title="Admin Panel"
+              title="Panel Admin"
             >
               <span className="material-symbols-outlined">shield_person</span>
             </Link>
@@ -130,7 +130,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
               className="block py-3 font-label-caps text-label-caps text-primary-container hover:text-primary transition-colors"
             >
-              Admin Panel
+              Panel Admin
             </Link>
           )}
         </div>

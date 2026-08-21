@@ -35,7 +35,7 @@ export default function Register() {
       }
       navigate("/");
     } catch (err) {
-      setError(err.message || "Registration failed");
+      setError(err.message || "Error en el registro");
     }
   };
 
@@ -50,9 +50,9 @@ export default function Register() {
           <Link to="/" className="font-display-lg text-headline-lg text-primary inline-block mb-4">
             WTech
           </Link>
-          <h1 className="font-headline-lg-mobile text-on-surface">Create Account</h1>
+          <h1 className="font-headline-lg-mobile text-on-surface">Crear Cuenta</h1>
           <p className="font-body-md text-on-surface-variant text-sm mt-2">
-            Join the WTech network
+            Unete a la red WTech
           </p>
         </div>
 
@@ -64,95 +64,95 @@ export default function Register() {
           )}
 
           <div>
-            <label className="font-label-caps text-on-surface mb-2 block">NAME</label>
+            <label className="font-label-caps text-on-surface mb-2 block">NOMBRE</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-              placeholder="Your name"
+              placeholder="Tu nombre"
               required
             />
           </div>
 
           <div>
-            <label className="font-label-caps text-on-surface mb-2 block">EMAIL</label>
+            <label className="font-label-caps text-on-surface mb-2 block">CORREO</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-              placeholder="your@email.com"
+              placeholder="tu@correo.com"
               required
             />
           </div>
 
           <div>
-            <label className="font-label-caps text-on-surface mb-2 block">PASSWORD</label>
+            <label className="font-label-caps text-on-surface mb-2 block">CONTRASEÑA</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-              placeholder="Create password"
+              placeholder="Crea una contraseña"
               required
             />
           </div>
 
           <div className="border-t border-outline-variant/30 pt-6">
             <p className="font-label-caps text-on-surface-variant mb-4 text-xs">
-              OPTIONAL — SHIPPING INFO
+              OPCIONAL — INFO DE ENVIO
             </p>
             <div className="space-y-4">
               <div>
-                <label className="font-label-caps text-on-surface mb-2 block">PHONE</label>
+                <label className="font-label-caps text-on-surface mb-2 block">TELEFONO</label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                  placeholder="Phone number"
+                  placeholder="Numero de telefono"
                 />
               </div>
               <div>
-                <label className="font-label-caps text-on-surface mb-2 block">ADDRESS</label>
+                <label className="font-label-caps text-on-surface mb-2 block">DIRECCION</label>
                 <input
                   type="text"
                   value={addressLine1}
                   onChange={(e) => setAddressLine1(e.target.value)}
                   className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                  placeholder="Street address"
+                  placeholder="Direccion"
                 />
               </div>
               <div>
-                <label className="font-label-caps text-on-surface mb-2 block">ADDRESS LINE 2</label>
+                <label className="font-label-caps text-on-surface mb-2 block">DIRECCION LINEA 2</label>
                 <input
                   type="text"
                   value={addressLine2}
                   onChange={(e) => setAddressLine2(e.target.value)}
                   className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                  placeholder="Apartment, suite, etc. (optional)"
+                  placeholder="Apartamento, suite, etc. (opcional)"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-label-caps text-on-surface mb-2 block">CITY</label>
+                  <label className="font-label-caps text-on-surface mb-2 block">CIUDAD</label>
                   <input
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                    placeholder="City"
+                    placeholder="Ciudad"
                   />
                 </div>
                 <div>
-                  <label className="font-label-caps text-on-surface mb-2 block">POSTAL CODE</label>
+                  <label className="font-label-caps text-on-surface mb-2 block">CODIGO POSTAL</label>
                   <input
                     type="text"
                     value={postalCode}
                     onChange={(e) => setPostalCode(e.target.value)}
                     className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                    placeholder="Postal code"
+                    placeholder="Codigo postal"
                   />
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default function Register() {
             disabled={loading}
             className="w-full bg-primary-container text-[#050B10] font-label-caps text-label-caps py-4 rounded uppercase tracking-widest hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 font-bold disabled:opacity-50"
           >
-            {loading ? "Creating Account..." : "Create Account"}
+            {loading ? "Creando Cuenta..." : "Crear Cuenta"}
           </button>
 
           <div className="relative my-4">
@@ -173,7 +173,7 @@ export default function Register() {
             </div>
             <div className="relative flex justify-center text-xs">
               <span className="bg-surface-container px-2 font-label-caps text-outline">
-                OR
+                O
               </span>
             </div>
           </div>
@@ -185,13 +185,13 @@ export default function Register() {
             className="w-full bg-surface-container border border-outline-variant text-on-surface font-label-caps text-label-caps py-4 rounded uppercase hover:border-primary-container hover:text-primary-container transition-all duration-300 flex items-center justify-center gap-2"
           >
             <span className="material-symbols-outlined text-lg">login</span>
-            Sign up with Google
+            Registrarse con Google
           </button>
 
           <p className="text-center font-body-md text-on-surface-variant text-sm mt-4">
-            Already have an account?{" "}
+            ¿Ya tienes cuenta?{" "}
             <Link to="/login" className="text-primary-container hover:underline">
-              Sign in
+              Iniciar sesion
             </Link>
           </p>
         </form>

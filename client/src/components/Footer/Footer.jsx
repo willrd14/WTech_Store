@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 const footerLinks = [
-  { label: "Warranty", path: "/about" },
-  { label: "Privacy Policy", path: "/about" },
-  { label: "Technical Specs", path: "/about" },
-  { label: "Store Locator", path: "/about" },
+  { label: "Garantia", path: "/about" },
+  { label: "Politica de Privacidad", path: "/about" },
+  { label: "Especificaciones", path: "/about" },
+  { label: "Ubicar Tienda", path: "/about" },
 ];
 
 export default function Footer() {
@@ -30,8 +30,8 @@ export default function Footer() {
           ))}
         </nav>
         <div className="relative z-10 font-label-caps text-label-caps text-on-surface-variant opacity-50 text-center mt-4">
-          &copy; 2024 WTech Circuitry Systems. All rights reserved. Built for
-          the high-performance era.
+          &copy; 2024 WTech Circuitry Systems. Todos los derechos reservados.
+          Construido para la era del alto rendimiento.
         </div>
       </div>
     </footer>

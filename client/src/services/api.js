@@ -147,4 +147,20 @@ export const api = {
     }
     return res.json();
   },
+
+  async uploadProductImage(file) {
+    const headers = await authHeaders();
+    delete headers["Content-Type"];
+    const formData = new FormData();
+    formData.append("image", file);
+    const res = await fetch(`${API_URL}/api/upload/product-image`, {
+      method: "POST",
+      headers: {
+        Authorization: headers.Authorization,
+      },
+      body: formData,
+    });
+    if (!res.ok) throw new Error("Failed to upload image");
+    return res.json();
+  },
 };

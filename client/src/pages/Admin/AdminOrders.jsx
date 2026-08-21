@@ -3,6 +3,14 @@ import { api } from "../../services/api";
 
 const statuses = ["pending", "paid", "shipped", "delivered", "cancelled"];
 
+const statusLabels = {
+  pending: "PENDIENTE",
+  paid: "PAGADO",
+  shipped: "ENVIADO",
+  delivered: "ENTREGADO",
+  cancelled: "CANCELADO",
+};
+
 const statusColors = {
   pending: "text-yellow-400 bg-yellow-400/10 border-yellow-400/30",
   paid: "text-primary-container bg-primary-container/10 border-primary-container/30",
@@ -41,7 +49,7 @@ export default function AdminOrders() {
         prev.map((o) => (o.id === orderId ? { ...o, status: newStatus } : o))
       );
     } catch (err) {
-      alert("Failed to update order status");
+      alert("Error al actualizar el estado del pedido");
     }
   };
 
@@ -50,13 +58,13 @@ export default function AdminOrders() {
   return (
     <div>
       <h1 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">
-        <span className="text-gradient-cyan">Orders</span>
+        <span className="text-gradient-cyan">Pedidos</span>
       </h1>
 
       {loading ? (
         <div className="flex items-center justify-center h-40">
           <div className="text-primary-container font-label-caps animate-pulse">
-            Loading orders...
+            Cargando pedidos...
           </div>
         </div>
       ) : orders.length === 0 ? (
@@ -64,7 +72,7 @@ export default function AdminOrders() {
           <span className="material-symbols-outlined text-5xl text-outline-variant mb-4 block">
             receipt_long
           </span>
-          <p className="text-on-surface-variant font-body-md">No orders yet</p>
+          <p className="text-on-surface-variant font-body-md">No hay pedidos aun</p>
         </div>
       ) : (
         <>
@@ -74,19 +82,19 @@ export default function AdminOrders() {
                 <thead>
                   <tr className="border-b border-outline-variant/30">
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Order ID
+                      ID Pedido
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Items
+                      Articulos
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
                       Total
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Date
+                      Fecha
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Status
+                      Estado
                     </th>
                   </tr>
                 </thead>
@@ -100,7 +108,7 @@ export default function AdminOrders() {
                         #{order.id}
                       </td>
                       <td className="px-6 py-4 text-on-surface-variant text-sm">
-                        {order.order_items?.length || 0} item
+                        {order.order_items?.length || 0} articulo
                         {order.order_items?.length !== 1 ? "s" : ""}
                       </td>
                       <td className="px-6 py-4 text-primary-fixed text-sm font-medium">
@@ -121,7 +129,7 @@ export default function AdminOrders() {
                         >
                           {statuses.map((s) => (
                             <option key={s} value={s} className="bg-surface">
-                              {s.toUpperCase()}
+                              {statusLabels[s]}
                             </option>
                           ))}
                         </select>
@@ -140,17 +148,17 @@ export default function AdminOrders() {
                 disabled={page === 1}
                 className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                Previous
+                Anterior
               </button>
               <span className="font-label-caps text-label-caps text-on-surface-variant">
-                Page {page} of {totalPages}
+                Pagina {page} de {totalPages}
               </span>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
                 className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                Next
+                Siguiente
               </button>
             </div>
           )}

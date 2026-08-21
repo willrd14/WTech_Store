@@ -17,7 +17,7 @@ export default function Dashboard() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-primary-container font-label-caps animate-pulse">
-          Loading dashboard...
+          Cargando panel...
         </div>
       </div>
     );
@@ -25,19 +25,19 @@ export default function Dashboard() {
 
   const cards = [
     {
-      label: "Total Products",
+      label: "Total Productos",
       value: stats?.totalProducts ?? 0,
       icon: "inventory_2",
       color: "primary-container",
     },
     {
-      label: "Total Orders",
+      label: "Total Pedidos",
       value: stats?.totalOrders ?? 0,
       icon: "receipt_long",
       color: "tertiary-fixed-dim",
     },
     {
-      label: "Revenue",
+      label: "Ingresos",
       value: `$${(stats?.totalRevenue ?? 0).toFixed(2)}`,
       icon: "attach_money",
       color: "primary-fixed",
@@ -47,7 +47,7 @@ export default function Dashboard() {
   return (
     <div>
       <h1 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">
-        Admin <span className="text-gradient-cyan">Dashboard</span>
+        Panel <span className="text-gradient-cyan">de Admin</span>
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -12,17 +12,17 @@ export default function FeaturedProducts() {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
         <div>
           <h2 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">
-            Latest Innovations
+            Ultimas Innovaciones
           </h2>
           <p className="font-label-caps text-label-caps text-outline">
-            Latest mobile tech accessories.
+            Los ultimos accesorios tecnologicos.
           </p>
         </div>
         <Link
           to="/products"
           className="text-primary-container font-label-caps text-label-caps border-b border-primary-container/30 hover:border-primary-container pb-1 transition-colors self-start md:self-auto"
         >
-          View All Data
+          Ver Todo
         </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

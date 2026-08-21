@@ -6,7 +6,7 @@ export default function CategoryBento() {
     <section className="px-5 md:px-20 py-16 max-w-[1440px] mx-auto">
       <div className="flex items-center gap-4 mb-12">
         <h2 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
-          Categories
+          Categorias
         </h2>
         <div className="flex-grow h-px bg-gradient-to-r from-primary-container/30 to-transparent" />
       </div>

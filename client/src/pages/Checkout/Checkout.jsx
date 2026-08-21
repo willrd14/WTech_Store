@@ -56,16 +56,16 @@ export default function Checkout() {
             check_circle
           </span>
           <h1 className="font-display-lg text-headline-lg text-on-surface mb-4">
-            Payment Successful
+            Pago Exitoso
           </h1>
           <p className="font-body-md text-on-surface-variant mb-8">
-            Thank you for your purchase! Your order has been confirmed.
+            ¡Gracias por tu compra! Tu pedido ha sido confirmado.
           </p>
           <Link
             to="/products"
             className="bg-primary-container text-[#050B10] font-label-caps text-label-caps px-8 py-4 rounded uppercase hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 inline-flex items-center gap-2"
           >
-            Continue Shopping
+            Seguir Comprando
             <span className="material-symbols-outlined text-sm">arrow_forward</span>
           </Link>
         </div>
@@ -81,13 +81,13 @@ export default function Checkout() {
             receipt_long
           </span>
           <h1 className="font-display-lg text-headline-lg text-on-surface mb-4">
-            No Items to Checkout
+            No Hay Articulos para Pagar
           </h1>
           <Link
             to="/products"
             className="text-primary-container font-label-caps text-label-caps hover:underline"
           >
-            Browse Catalog
+            Ver Catalogo
           </Link>
         </div>
       </main>
@@ -127,7 +127,7 @@ export default function Checkout() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-7">
             <h1 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8 border-b border-primary/20 pb-4">
-              Checkout
+              Pago
             </h1>
 
             <div className="space-y-8">
@@ -136,91 +136,91 @@ export default function Checkout() {
                   <span className="material-symbols-outlined text-primary-container">
                     local_shipping
                   </span>
-                  SHIPPING ADDRESS
+                  DIRECCION DE ENVIO
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      FIRST NAME
+                      NOMBRE
                     </label>
                     <input
                       type="text"
                       value={shipping.firstName}
                       onChange={(e) => handleShippingChange("firstName", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="First name"
+                      placeholder="Nombre"
                     />
                   </div>
                   <div>
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      LAST NAME
+                      APELLIDO
                     </label>
                     <input
                       type="text"
                       value={shipping.lastName}
                       onChange={(e) => handleShippingChange("lastName", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="Last name"
+                      placeholder="Apellido"
                     />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      ADDRESS
+                      DIRECCION
                     </label>
                     <input
                       type="text"
                       value={shipping.address}
                       onChange={(e) => handleShippingChange("address", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="Street address"
+                      placeholder="Direccion"
                     />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      ADDRESS LINE 2
+                      DIRECCION LINEA 2
                     </label>
                     <input
                       type="text"
                       value={shipping.addressLine2}
                       onChange={(e) => handleShippingChange("addressLine2", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="Apartment, suite, etc. (optional)"
+                      placeholder="Apartamento, suite, etc. (opcional)"
                     />
                   </div>
                   <div>
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      CITY
+                      CIUDAD
                     </label>
                     <input
                       type="text"
                       value={shipping.city}
                       onChange={(e) => handleShippingChange("city", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="City"
+                      placeholder="Ciudad"
                     />
                   </div>
                   <div>
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      POSTAL CODE
+                      CODIGO POSTAL
                     </label>
                     <input
                       type="text"
                       value={shipping.postalCode}
                       onChange={(e) => handleShippingChange("postalCode", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="ZIP / Postal code"
+                      placeholder="Codigo postal"
                     />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="font-label-caps text-label-caps text-on-surface-variant mb-2 block">
-                      PHONE
+                      TELEFONO
                     </label>
                     <input
                       type="tel"
                       value={shipping.phone}
                       onChange={(e) => handleShippingChange("phone", e.target.value)}
                       className="w-full bg-surface-container-high border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                      placeholder="Phone number"
+                      placeholder="Numero de telefono"
                     />
                   </div>
                 </div>
@@ -231,10 +231,10 @@ export default function Checkout() {
               <div className="glass-panel rounded-lg p-6">
                 <h2 className="font-label-caps text-primary-container mb-4 flex items-center gap-2 text-base">
                   <span className="material-symbols-outlined text-primary-container">payment</span>
-                  PAYMENT
+                  PAGO
                 </h2>
                 <p className="font-body-md text-on-surface-variant text-sm mb-4">
-                  Complete your purchase securely with PayPal.
+                  Completa tu compra de forma segura con PayPal.
                 </p>
 
                 {error && (
@@ -286,7 +286,7 @@ export default function Checkout() {
                   <div className="flex items-center justify-center gap-2 mt-4">
                     <div className="w-4 h-4 border-2 border-primary-container border-t-transparent rounded-full animate-spin" />
                     <span className="font-label-caps text-label-caps text-on-surface-variant">
-                      Processing...
+                      Procesando...
                     </span>
                   </div>
                 )}
@@ -336,8 +336,8 @@ export default function Checkout() {
                   </span>
                 </div>
                 <div className="flex justify-between text-on-surface-variant">
-                  <span>SHIPPING</span>
-                  <span className="text-on-surface">FREE</span>
+                  <span>ENVIO</span>
+                  <span className="text-on-surface">GRATIS</span>
                 </div>
               </div>
               <div className="border-t border-primary/20 pt-4 mt-4 flex justify-between items-end">
@@ -347,7 +347,7 @@ export default function Checkout() {
                 </span>
               </div>
               <p className="text-center font-label-caps text-[10px] text-on-surface-variant mt-6 opacity-60">
-                SECURE PAYMENT VIA PAYPAL
+                PAGO SEGURO VIA PAYPAL
               </p>
             </div>
           </div>

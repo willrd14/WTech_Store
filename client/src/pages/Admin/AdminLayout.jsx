@@ -4,9 +4,9 @@ import { useAuth } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 
 const sidebarLinks = [
-  { label: "Dashboard", path: "/admin", icon: "dashboard", exact: true },
-  { label: "Products", path: "/admin/products", icon: "inventory_2" },
-  { label: "Orders", path: "/admin/orders", icon: "receipt_long" },
+  { label: "Panel", path: "/admin", icon: "dashboard", exact: true },
+  { label: "Productos", path: "/admin/products", icon: "inventory_2" },
+  { label: "Pedidos", path: "/admin/orders", icon: "receipt_long" },
 ];
 
 export default function AdminLayout() {
@@ -18,7 +18,7 @@ export default function AdminLayout() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-primary-container font-label-caps animate-pulse">
-          Loading...
+          Cargando...
         </div>
       </div>
     );
@@ -82,7 +82,7 @@ export default function AdminLayout() {
             className="flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
           >
             <span className="material-symbols-outlined text-xl">home</span>
-            {sidebarOpen && <span>Back to Store</span>}
+            {sidebarOpen && <span>Volver a la Tienda</span>}
           </Link>
         </div>
       </aside>

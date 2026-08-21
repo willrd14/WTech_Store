@@ -9,24 +9,25 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-primary-container/30 bg-primary-container/10">
             <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
             <span className="font-label-caps text-label-caps text-primary-container uppercase">
-              System Online
+              Sistema En Linea
             </span>
           </div>
           <h1 className="font-display-lg text-display-lg text-on-surface mb-6">
-            Next-Gen
+            Accesorios de
             <br />
-            <span className="text-gradient-cyan">Accessories.</span>
+            <span className="text-gradient-cyan">Proxima Generacion.</span>
           </h1>
           <p className="font-body-md text-body-md text-on-surface-variant mb-10 max-w-md">
-            Experience the pinnacle of mobile defense and power. High-fidelity
-            accessories designed for ultimate protection and performance.
+            Experimenta lo ultimo en proteccion y potencia para tu movil.
+            Accesorios de alta fidelidad disenados para la maxima proteccion y
+            rendimiento.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
               to="/products"
               className="bg-primary-container text-[#050B10] font-label-caps text-label-caps px-8 py-4 rounded hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 uppercase flex items-center gap-2"
             >
-              Initialize Sequence
+              Iniciar Secuencia
               <span className="material-symbols-outlined text-sm">
                 arrow_forward
               </span>
@@ -35,7 +36,7 @@ export default function Hero() {
               to="/products"
               className="bg-transparent border border-primary-container text-primary-container font-label-caps text-label-caps px-8 py-4 rounded hover:bg-primary-container/10 transition-all duration-300 uppercase"
             >
-              View Specs
+              Ver Especificaciones
             </Link>
           </div>
         </div>

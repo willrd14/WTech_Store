@@ -26,13 +26,13 @@ export default function AdminProducts() {
   }, [page]);
 
   const handleDelete = async (id, name) => {
-    if (!window.confirm(`Delete "${name}"? This cannot be undone.`)) return;
+    if (!window.confirm(`Eliminar "${name}"? Esta accion no se puede deshacer.`)) return;
     try {
       await api.deleteAdminProduct(id);
       setProducts((prev) => prev.filter((p) => p.id !== id));
       setTotal((prev) => prev - 1);
     } catch (err) {
-      alert("Failed to delete product");
+      alert("Error al eliminar el producto");
     }
   };
 
@@ -42,21 +42,21 @@ export default function AdminProducts() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
-          <span className="text-gradient-cyan">Products</span>
+          <span className="text-gradient-cyan">Productos</span>
         </h1>
         <Link
           to="/admin/products/new"
           className="bg-primary-container text-on-primary font-label-caps text-label-caps px-5 py-2.5 rounded flex items-center gap-2 neon-glow neon-glow-hover transition-all font-bold uppercase tracking-wider"
         >
           <span className="material-symbols-outlined text-lg">add</span>
-          Add Product
+          Agregar Producto
         </Link>
       </div>
 
       {loading ? (
         <div className="flex items-center justify-center h-40">
           <div className="text-primary-container font-label-caps animate-pulse">
-            Loading products...
+            Cargando productos...
           </div>
         </div>
       ) : (
@@ -67,19 +67,19 @@ export default function AdminProducts() {
                 <thead>
                   <tr className="border-b border-outline-variant/30">
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Product
+                      Producto
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Category
+                      Categoria
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Price
+                      Precio
                     </th>
                     <th className="text-left px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
                       Stock
                     </th>
                     <th className="text-right px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase">
-                      Actions
+                      Acciones
                     </th>
                   </tr>
                 </thead>
@@ -128,7 +128,7 @@ export default function AdminProducts() {
                               : "bg-error-container/10 text-error border border-error-container/30"
                           }`}
                         >
-                          {product.in_stock ? "IN STOCK" : "OUT OF STOCK"}
+                          {product.in_stock ? "EN STOCK" : "SIN STOCK"}
                         </span>
                       </td>
                       <td className="px-6 py-4">
@@ -165,17 +165,17 @@ export default function AdminProducts() {
                 disabled={page === 1}
                 className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                Previous
+                Anterior
               </button>
               <span className="font-label-caps text-label-caps text-on-surface-variant">
-                Page {page} of {totalPages}
+                Pagina {page} de {totalPages}
               </span>
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
                 className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary-container disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
-                Next
+                Siguiente
               </button>
             </div>
           )}

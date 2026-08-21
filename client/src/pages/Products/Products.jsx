@@ -67,17 +67,17 @@ export default function Products() {
         <div className="relative z-10 text-center px-4">
           <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary-fixed mb-2 drop-shadow-md">
             {sortNew
-              ? "NEW ARRIVALS"
+              ? "NOVEDADES"
               : dealsOnly
-              ? "DEALS"
-              : "ACCESSORIES CATALOG"}
+              ? "OFERTAS"
+              : "CATALOGO DE ACCESORIOS"}
           </h1>
           <p className="font-label-caps text-on-surface-variant tracking-[0.2em]">
             {sortNew
-              ? "LATEST TECH ACCESSORIES"
+              ? "ULTIMOS ACCESORIOS TECNOLOGICOS"
               : dealsOnly
-              ? "EXCLUSIVE DISCOUNTS"
-              : "EQUIP YOUR DEVICE WITH THE BEST"}
+              ? "DESCUENTOS EXCLUSIVOS"
+              : "EQUIPA TU DISPOSITIVO CON LO MEJOR"}
           </p>
         </div>
       </header>
@@ -88,29 +88,29 @@ export default function Products() {
         <div className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-6 border-b border-outline-variant/30 pb-4">
             <p className="font-body-md text-on-surface-variant text-sm">
-              Showing {filteredProducts.length} of {products.length} results
+              Mostrando {filteredProducts.length} de {products.length} resultados
             </p>
             <div className="flex items-center gap-2 font-label-caps text-sm">
-              <span className="text-on-surface-variant">SORT BY:</span>
+              <span className="text-on-surface-variant">ORDENAR POR:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="bg-transparent border-none text-primary-fixed focus:ring-0 cursor-pointer p-0"
               >
                 <option className="bg-surface" value="featured">
-                  Featured
+                  Destacados
                 </option>
                 <option className="bg-surface" value="newest">
-                  Newest
+                  Mas Recientes
                 </option>
                 <option className="bg-surface" value="price-asc">
-                  Price: Low to High
+                  Precio: Menor a Mayor
                 </option>
                 <option className="bg-surface" value="price-desc">
-                  Price: High to Low
+                  Precio: Mayor a Menor
                 </option>
                 <option className="bg-surface" value="rating">
-                  Rating
+                  Valoracion
                 </option>
               </select>
             </div>

@@ -22,7 +22,7 @@ export default function Contact() {
       setSent(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
-      setError(err.message || "Failed to send message. Please try again.");
+      setError(err.message || "Error al enviar el mensaje. Intenta de nuevo.");
     } finally {
       setSending(false);
     }
@@ -37,10 +37,10 @@ export default function Contact() {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">
-            Contact <span className="text-gradient-cyan">Support</span>
+            Contactar <span className="text-gradient-cyan">Soporte</span>
           </h1>
           <p className="font-body-md text-on-surface-variant">
-            Need help? Our technical support team is ready to assist you.
+            ¿Necesitas ayuda? Nuestro equipo de soporte tecnico esta listo para asistirte.
           </p>
         </div>
 
@@ -52,16 +52,16 @@ export default function Contact() {
               </span>
             </div>
             <h2 className="font-display-lg text-xl text-on-surface mb-2">
-              Message Sent
+              Mensaje Enviado
             </h2>
             <p className="text-on-surface-variant font-body-md mb-6">
-              We have received your message and will get back to you soon.
+              Hemos recibido tu mensaje y te responderemos pronto.
             </p>
             <button
               onClick={() => setSent(false)}
               className="bg-primary-container text-on-primary font-label-caps text-label-caps px-6 py-3 rounded uppercase tracking-widest hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 font-bold"
             >
-              Send Another
+              Enviar Otro
             </button>
           </div>
         ) : (
@@ -74,7 +74,7 @@ export default function Contact() {
 
             <div>
               <label className="font-label-caps text-on-surface mb-2 block">
-                NAME
+                NOMBRE
               </label>
               <input
                 type="text"
@@ -83,14 +83,14 @@ export default function Contact() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                placeholder="Your name"
+                placeholder="Tu nombre"
                 required
               />
             </div>
 
             <div>
               <label className="font-label-caps text-on-surface mb-2 block">
-                EMAIL
+                CORREO
               </label>
               <input
                 type="email"
@@ -99,14 +99,14 @@ export default function Contact() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors"
-                placeholder="your@email.com"
+                placeholder="tu@correo.com"
                 required
               />
             </div>
 
             <div>
               <label className="font-label-caps text-on-surface mb-2 block">
-                SUBJECT
+                ASUNTO
               </label>
               <select
                 value={formData.subject}
@@ -116,18 +116,18 @@ export default function Contact() {
                 className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface focus:border-primary-container focus:outline-none transition-colors"
                 required
               >
-                <option value="">Select a subject</option>
-                <option value="order">Order Issue</option>
-                <option value="return">Return / Exchange</option>
-                <option value="warranty">Warranty Claim</option>
-                <option value="technical">Technical Support</option>
-                <option value="other">Other</option>
+                <option value="">Selecciona un asunto</option>
+                <option value="order">Problema con Pedido</option>
+                <option value="return">Devolucion / Cambio</option>
+                <option value="warranty">Reclamo de Garantia</option>
+                <option value="technical">Soporte Tecnico</option>
+                <option value="other">Otro</option>
               </select>
             </div>
 
             <div>
               <label className="font-label-caps text-on-surface mb-2 block">
-                MESSAGE
+                MENSAJE
               </label>
               <textarea
                 value={formData.message}
@@ -136,7 +136,7 @@ export default function Contact() {
                 }
                 rows="5"
                 className="w-full bg-surface-container border border-outline-variant rounded px-4 py-3 font-body-md text-on-surface placeholder-outline focus:border-primary-container focus:outline-none transition-colors resize-none"
-                placeholder="Describe your issue..."
+                placeholder="Describe tu problema..."
                 required
               />
             </div>
@@ -147,10 +147,10 @@ export default function Contact() {
               className="w-full bg-primary-container text-[#050B10] font-label-caps text-label-caps py-4 rounded uppercase tracking-widest hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 font-bold flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {sending ? (
-                "Sending..."
+                "Enviando..."
               ) : (
                 <>
-                  Send Transmission
+                  Enviar Mensaje
                   <span className="material-symbols-outlined text-lg">send</span>
                 </>
               )}

@@ -12,16 +12,16 @@ export default function Cart() {
             shopping_cart
           </span>
           <h1 className="font-display-lg text-headline-lg text-on-surface mb-4">
-            Cart is Empty
+            El Carrito Esta Vacio
           </h1>
           <p className="font-body-md text-on-surface-variant mb-8">
-            Your terminal has no active orders.
+            Tu terminal no tiene pedidos activos.
           </p>
           <Link
             to="/products"
             className="bg-primary-container text-[#050B10] font-label-caps text-label-caps px-8 py-4 rounded uppercase hover:shadow-[0px_0px_20px_rgba(0,242,255,0.4)] transition-all duration-300 inline-flex items-center gap-2"
           >
-            Browse Catalog
+            Ver Catalogo
             <span className="material-symbols-outlined text-sm">
               arrow_forward
             </span>
@@ -37,10 +37,10 @@ export default function Cart() {
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="relative z-10 text-center">
           <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary drop-shadow-[0_0_15px_rgba(0,242,255,0.5)]">
-            SECURE TERMINAL
+            TERMINAL SEGURA
           </h1>
           <p className="font-label-caps text-label-caps text-primary-fixed/70 uppercase tracking-widest mt-2">
-            Active Session // Cart Data
+            Sesion Activa // Datos del Carrito
           </p>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-px circuit-line-h" />
@@ -131,7 +131,7 @@ export default function Cart() {
               <div className="absolute top-6 right-4 w-px h-8 bg-primary/40" />
             </div>
             <h2 className="font-display-lg text-headline-lg-mobile text-on-surface mb-6 border-b border-primary/20 pb-4">
-              Order Summary
+              Resumen del Pedido
             </h2>
             <div className="space-y-4 mb-8 font-label-caps text-label-caps">
               <div className="flex justify-between text-on-surface-variant">
@@ -141,15 +141,15 @@ export default function Cart() {
                 </span>
               </div>
               <div className="flex justify-between text-on-surface-variant">
-                <span>EST. SHIPPING</span>
+                <span>ENVIO EST.</span>
                 <span className="text-on-surface">
-                  CALCULATED AT CHECKOUT
+                  SE CALCULARA EN EL PAGO
                 </span>
               </div>
               <div className="flex justify-between text-on-surface-variant">
-                <span>TAXES</span>
+                <span>IMPUESTOS</span>
                 <span className="text-on-surface">
-                  CALCULATED AT CHECKOUT
+                  SE CALCULARA EN EL PAGO
                 </span>
               </div>
             </div>
@@ -165,13 +165,13 @@ export default function Cart() {
               to="/checkout"
               className="w-full bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded uppercase tracking-widest hover:bg-primary-fixed-dim transition-all duration-300 shadow-[0px_0px_15px_rgba(0,242,255,0.2)] hover:shadow-[0px_0px_25px_rgba(0,242,255,0.5)] flex items-center justify-center gap-2 group"
             >
-              Proceed to Checkout
+              Proceder al Pago
               <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
                 arrow_forward
               </span>
             </Link>
             <p className="text-center font-label-caps text-[10px] text-on-surface-variant mt-4 opacity-60">
-              SECURE 256-BIT ENCRYPTION
+              ENCRIPTACION SEGURA DE 256-BIT
             </p>
           </div>
         </div>
