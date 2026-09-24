@@ -2,7 +2,7 @@
 
 > **Stack:** React 19 + Vite 8 + Tailwind CSS 3 + Supabase + Express 4 + PayPal (Sandbox)
 > **Design:** Dark cyberpunk/tech theme from Stitch project
-> **Database:** Supabase (PostgreSQL) hosted at `lhhyuismzzsyddsnxjjk.supabase.co`
+> **Database:** Supabase (PostgreSQL) hosted at `your-project.supabase.co`
 
 ---
 
@@ -689,7 +689,7 @@ Has additional fields vs local data: `slug`, `images[]`, `reviews_count`, `creat
   - `PORT`
 
 ### Database — Supabase (Cloud)
-- Project ref: `lhhyuismzzsyddsnxjjk`
+- Project ref: `your-project-ref`
 - No deployment needed — already hosted
 - SQL migrations executed via Supabase Management API
 
@@ -699,24 +699,24 @@ Has additional fields vs local data: `slug`, `images[]`, `reviews_count`, `creat
 
 ### Client (.env) — Local Development
 ```
-VITE_SUPABASE_URL=https://lhhyuismzzsyddsnxjjk.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGci...
-VITE_PAYPAL_CLIENT_ID=AeqZMR6FIXZeglCevik_MA41EDM4R35R_bOaPcBfiDT3bkYOSBKlyJ_wIeUkrz9iAVQ_3Nx2K9jKOubo
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_PAYPAL_CLIENT_ID=your_paypal_client_id
 VITE_API_URL=http://localhost:3001
 ```
 
 ### Server (.env) — Local Development
 ```
-SUPABASE_URL=https://lhhyuismzzsyddsnxjjk.supabase.co
-SUPABASE_ANON_KEY=eyJhbGci...
-PAYPAL_CLIENT_ID=AeqZMR6FIXZeglCevik_MA41EDM4R35R_bOaPcBfiDT3bkYOSBKlyJ_wIeUkrz9iAVQ_3Nx2K9jKOubo
-PAYPAL_CLIENT_SECRET=ECx1UYo8u8Q3IpGczLLqb82gkk8AAtx1nUvMdEIbZdp2by5y80LMz-Dqk6-GbQb9ur6-EZxatj5Zp9GW
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your_supabase_anon_key
+PAYPAL_CLIENT_ID=your_paypal_client_id
+PAYPAL_CLIENT_SECRET=your_paypal_client_secret
 PAYPAL_MODE=sandbox
 PORT=3001
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=wtech-support@w-tech.uk
-SMTP_PASS=lopv lzdz nstt hjms
+SMTP_PASS=your_gmail_app_password
 SUPPORT_EMAIL=wtech-support@w-tech.uk
 ```
 
